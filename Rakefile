@@ -11,18 +11,17 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "giraffe"
   gem.homepage = "http://github.com/mcmaloney/giraffe"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Shows you a giraffe: ASCII or image."
+  gem.description = "Shows you a giraffe right from your command line! Thanks to Bryan Woods and Kitty."
   gem.email = "maloney.mc@gmail.com"
   gem.authors = ["Michael Maloney"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
-  #  gem.add_development_dependency 'rspec', '> 1.2.3'
+  gem.executables << "giraffe"
+  gem.require_path = "bin"
+  gem.add_runtime_dependency 'launchy'
+  gem.add_development_dependency 'launchy'
 end
 Jeweler::RubygemsDotOrgTasks.new
 

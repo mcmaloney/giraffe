@@ -1,0 +1,88 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'optparse'
+require 'launchy'
+
+class Giraffe
+  def coy_giraffe
+    coy_giraffe = <<-'OMG GIRAFFE' 
+              /~~~~\   /~~~~\
+              \    /   \    /
+               |  |_____|  |
+             /~             ~\
+    /~~~~~-_|  /~~\    /~~~\  |_-~~~~~\
+    \ ==== /| |   O|  |   ^ | |\ ==== /
+     ~-__-~ | |_---+--+----_| | ~-__-~
+            |/~             ~\|
+            /                 \
+           (      O      O     )
+            `\              ./`
+              ~-__________-~|
+              |   |\__/|    |
+              |   |/~~\|    |
+              | /~~~~~~~~~\ |
+              | |         | |
+              | |         | |
+              | |         | |
+              | |         | |
+
+    OMG GIRAFFE
+  end
+  
+  # All of the ASCII giraffes.
+  def all_giraffes
+    methods.select { |m| m =~ /_giraffe$/ }
+  end
+  
+  # Number of the image we want to show from the S3 bucket.
+  def self.random_pic_number
+    i = rand(11)
+    if i < 10
+      i = "00#{i.to_s}"
+    else
+      i = "0#{i.to_s}"
+    end
+  end
+
+  # Pick a random image from the giraffe_gem S3 bucket.
+  def self.random_img
+    "https://s3.amazonaws.com/giraffe_gem/#{random_pic_number}.jpg"
+  end
+  
+  # A random ASCII giraffe.
+  def random_ascii
+    print send(all_giraffes[rand(all_giraffes.length)])
+  end
+end
+
+# By default, we only want to show 1 ASCII giraffe if a count is entered...
+options = { :count => 1, :browser => false }
+
+OptionParser.new do |opts|
+  opts.banner = "Usage #{__FILE__} [options]"
+  opts.on("-c N", "--count N", "How many giraffes do you want?") do |count|
+    options[:count] = count.to_i
+  end
+  
+  # Show us a random giraffe image if we use the -b argument!
+  opts.on("-b", "--browser", "Show me a real giraffe.") do |browser|
+    options[:browser] = true
+    Launchy.open("#{Giraffe.random_img}")
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+
+# OMG GIRAFFE!!
+giraffe = Giraffe.new
+unless options[:browser]
+  options[:count].times do
+    giraffe.random_ascii
+  end
+end
+
