@@ -1,9 +1,9 @@
-= OMG GIRAFFE!
+= OMG GIRAFFES!
 
 Installation
 =============
 
-(sudo) gem install giraffe
+(sudo) gem install giraffes
 
 * On your command line, run `giraffe` to see a giraffe right in your prompt.
 * If you'd like to see a REAL giraffe, run `giraffe -b` to see one!
