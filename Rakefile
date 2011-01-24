@@ -11,7 +11,7 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  gem.name = "giraffe"
+  gem.name = "giraffes"
   gem.homepage = "http://github.com/mcmaloney/giraffe"
   gem.license = "MIT"
   gem.summary = "Shows you a giraffe: ASCII or image."
