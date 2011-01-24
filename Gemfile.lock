@@ -1,11 +1,15 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    configuration (1.2.0)
     git (1.2.5)
     jeweler (1.5.2)
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     rake (0.8.7)
     rcov (0.9.8)
     shoulda (2.11.3)
@@ -16,5 +20,6 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.0.0)
   jeweler (~> 1.5.2)
+  launchy
   rcov
   shoulda
